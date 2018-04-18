@@ -1,12 +1,14 @@
 package com.finalprojectandroid.sriyavishalakshy.eyesofhawk;
 
 import android.support.annotation.NonNull;
+import android.support.design.widget.*;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
    // private FirebaseFirestore firebaseFirestore;
 
     private String current_user_id;
-    //private FloatingActionButton addPostBtn;
+    private FloatingActionButton addPostBtn;
 
 
 
@@ -36,10 +38,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
 
+
         mainToolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
         //setting the app title
         getSupportActionBar().setTitle("Eyes Of Hawk");
+        addPostBtn = findViewById(R.id.add_post_btn);
+        addPostBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent newPostIntent = new Intent(MainActivity.this, NewPostActivity.class);
+                startActivity(newPostIntent);
+
+            }
+        });
 
     }
 
