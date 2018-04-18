@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "53379551144",
+    "firebase_url": "https://eyesofhawk-5a441.firebaseio.com",
+    "project_id": "eyesofhawk-5a441",
+    "storage_bucket": "eyesofhawk-5a441.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53379551144:android:eeb45c17449f9426",
+        "android_client_info": {
+          "package_name": "com.finalprojectandroid.sriyavishalakshy.eyesofhawk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53379551144-d11756mpu80riaven559okm4h7ugbhtv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.finalprojectandroid.sriyavishalakshy.eyesofhawk",
+            "certificate_hash": "34d303322be28141aa74aef9e0ec11f508cb8501"
+          }
+        },
+        {
+          "client_id": "53379551144-kfgropt267396p46j7i3u79csql7p71g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG1OzWA0uHaSQLgGCFI_mM1L3eS7SUD1k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53379551144-kfgropt267396p46j7i3u79csql7p71g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
