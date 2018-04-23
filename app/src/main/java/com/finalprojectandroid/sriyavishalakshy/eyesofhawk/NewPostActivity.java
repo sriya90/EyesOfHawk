@@ -95,7 +95,8 @@ public class NewPostActivity extends AppCompatActivity {
 
                                                     Toast.makeText(NewPostActivity.this, "Post was added", Toast.LENGTH_LONG).show();
                                                     Intent mainIntent = new Intent(NewPostActivity.this, MainActivity.class);
-                                                   // String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+                                                   NotificationGenerator
+                                                    // String refreshedToken = FirebaseInstanceId.getInstance().getToken();
 
                                                     startActivity(mainIntent);
                                                     finish();
