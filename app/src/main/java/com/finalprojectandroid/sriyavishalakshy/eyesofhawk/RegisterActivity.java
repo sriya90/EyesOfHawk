@@ -73,8 +73,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                                     if (task.isSuccessful()) {
 
-                                        // Intent setupIntent = new Intent(RegisterActivity.this, SetupActivity.class);
-                                        // startActivity(setupIntent);
+                                        Intent setupIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                                        startActivity(setupIntent);
                                         finish();
 
                                     } else {

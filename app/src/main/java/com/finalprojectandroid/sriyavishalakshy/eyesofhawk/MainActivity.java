@@ -2,6 +2,8 @@ package com.finalprojectandroid.sriyavishalakshy.eyesofhawk;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.*;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -19,18 +21,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-//import com.google.firebase.firestore.DocumentSnapshot;
-//import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar mainToolbar;
     private FirebaseAuth mAuth;
-   // private FirebaseFirestore firebaseFirestore;
+   private FirebaseFirestore firebaseFirestore;
 
     private String current_user_id;
     private FloatingActionButton addPostBtn;
+    private BottomNavigationView mainbottomNav;
 
-
+    private HomeFragment homeFragment;
+    private NotifFragment notificationFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,17 +47,51 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mainToolbar);
         //setting the app title
         getSupportActionBar().setTitle("Eyes Of Hawk");
-        addPostBtn = findViewById(R.id.add_post_btn);
-        addPostBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        initializeFragment();
+        mainbottomNav=(BottomNavigationView)findViewById(R.id.mainBottomNav);
+        if(mAuth.getCurrentUser() != null) {
 
-                Intent newPostIntent = new Intent(MainActivity.this, NewPostActivity.class);
-                startActivity(newPostIntent);
 
-            }
-        });
 
+            mainbottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                    Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.main_container);
+
+                    switch (item.getItemId()) {
+
+                        case R.id.bottom_action_home:
+
+                            replaceFragment(homeFragment, currentFragment);
+                            return true;
+
+
+                        case R.id.bottom_action_notif:
+
+                            replaceFragment(notificationFragment, currentFragment);
+                            return true;
+
+                        default:
+                            return false;
+
+
+                    }
+
+                }
+            });
+
+            addPostBtn = findViewById(R.id.add_post_btn);
+            addPostBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent newPostIntent = new Intent(MainActivity.this, NewPostActivity.class);
+                    startActivity(newPostIntent);
+
+                }
+            });
+        }
     }
 
     @Override
@@ -93,4 +131,44 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void initializeFragment(){
+
+        // FRAGMENTS
+        homeFragment = new HomeFragment();
+        notificationFragment = new NotifFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+        fragmentTransaction.add(R.id.main_container, homeFragment);
+        fragmentTransaction.add(R.id.main_container, notificationFragment);
+
+        fragmentTransaction.hide(notificationFragment);
+
+        fragmentTransaction.commit();
+
+    }
+
+    private void replaceFragment(Fragment fragment, Fragment currentFragment){
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        if(fragment == homeFragment){
+
+            fragmentTransaction.hide(notificationFragment);
+
+        }
+
+
+
+        if(fragment == notificationFragment){
+
+            fragmentTransaction.hide(homeFragment);
+
+        }
+        fragmentTransaction.show(fragment);
+
+        //fragmentTransaction.replace(R.id.main_container, fragment);
+        fragmentTransaction.commit();
+
+    }
+
 }
