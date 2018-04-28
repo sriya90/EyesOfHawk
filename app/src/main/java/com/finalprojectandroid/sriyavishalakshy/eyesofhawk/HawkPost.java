@@ -4,7 +4,7 @@ import java.util.Date;
 /*
 This is the object class that represents the posts that have been posted
 I will be reusing this class to post about Food and for generic posts about events around campus
-Author: Sriya Vishalakshy Sahasranam
+@author sriyavishalakshy
 
 */
 
@@ -17,7 +17,8 @@ public class HawkPost {
     }
 
     /**
-     * HawkPost
+     * HawkPost Constructor with parameters that are fetched
+     * from firebase database
      * @param user_id
      * @param desc
      * @param room_no

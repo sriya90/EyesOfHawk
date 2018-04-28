@@ -20,6 +20,10 @@ import com.google.firebase.auth.GetTokenResult;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+/**
+ * This is activity class to register new user and add the user to the database
+ * @author sriyavishalakshy
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText reg_email_field;
@@ -80,17 +84,13 @@ public class RegisterActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
 
                                     if (task.isSuccessful()) {
+                                        //assign user to current user on successful log in
                                         FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
                                         mUser.getIdToken(true)
                                                 .addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
                                                     public void onComplete(@NonNull Task<GetTokenResult> task) {
                                                         if (task.isSuccessful()) {
                                                             FirebaseMessaging.getInstance().subscribeToTopic("pushNotifications");
-
-                                                            // Send token to your backend via HTTPS
-                                                            // ...
-                                                        } else {
-                                                            // Handle error -> task.getException();
                                                         }
                                                     }
                                                 });
@@ -147,6 +147,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Used to send the user to main page after log in
+     */
     private void sendToMain() {
 
         Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
@@ -156,7 +159,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     *To check if user has valid hawk id
      * @param email
      * @return boolean
      */

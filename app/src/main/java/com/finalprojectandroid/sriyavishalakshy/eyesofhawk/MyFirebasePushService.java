@@ -16,8 +16,10 @@ public class MyFirebasePushService extends FirebaseMessagingService {
     private static final String TAG = "FirebaseMessagingServce";
 
     /**
-     *
+     *@author sriyavishalakshy
      * @param remoteMessage
+     * When pushnotification is recieved we have to set the title and
+     * body of the notification
      */
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -38,7 +40,8 @@ public class MyFirebasePushService extends FirebaseMessagingService {
     }
 
     /**
-     *
+     *This sets the charectorstics of the notification and
+     * the ui of the notification and also setting a sound
      * @param notificationTitle
      * @param notificationBody
      */

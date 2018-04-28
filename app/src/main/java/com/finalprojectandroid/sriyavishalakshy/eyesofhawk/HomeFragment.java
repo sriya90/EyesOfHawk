@@ -23,8 +23,11 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
-This is the fragment class that is generated in order to fill the home page
- This uses a recycleadapter
+ *This is the fragment class that is generated in order to fill the home page fragments
+ * The home screen has two fragments one to populate general events on campus
+ * and other for events with food involved
+ *This uses a recycleadapter
+ * @author sriyavishalakshy
  */
 public class HomeFragment extends Fragment {
 
@@ -42,7 +45,8 @@ public class HomeFragment extends Fragment {
     }
 
     /**
-     *
+     *This creates the view for the home screen which has
+     * a list of all evets that are happening on campus along with the dates
      * @param inflater
      * @param container
      * @param savedInstanceState
@@ -59,6 +63,7 @@ public class HomeFragment extends Fragment {
 
 
         post_list = new ArrayList<>();
+        //used to inflate the home list with database from firebase
         post_list_view = view.findViewById(R.id.hawk_post_list);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -87,8 +92,8 @@ public class HomeFragment extends Fragment {
 
                 }
             });
-
-            Query firstQuery = firebaseFirestore.collection("Posts").orderBy("timestamp", Query.Direction.DESCENDING).limit(3);
+        //Posts about general events around campus are being stored in this db and are fetched to populate the list
+            Query firstQuery = firebaseFirestore.collection("Posts").orderBy("timestamp", Query.Direction.DESCENDING);
             firstQuery.addSnapshotListener(getActivity(), new EventListener<QuerySnapshot>() {
                 @Override
                 public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
@@ -140,7 +145,7 @@ public class HomeFragment extends Fragment {
     }
 
     /**
-     *
+     * This method is used to load more posts that are being loaded as they being added
      */
     public void loadMorePost(){
 

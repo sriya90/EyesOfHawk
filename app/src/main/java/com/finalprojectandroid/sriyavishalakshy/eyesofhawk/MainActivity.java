@@ -18,6 +18,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+/**
+ * This class is the home page of the app
+ * where the food notifications and posts are
+ * displayed as per the fragments
+ * @author sriyavishalakshy
+ */
 public class MainActivity extends AppCompatActivity {
     private Toolbar mainToolbar;
     private FirebaseAuth mAuth;
@@ -31,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private NotifFragment notificationFragment;
 
     /**
-     *
+     *This method initializes the home fragment,notification fragments
+     * and subscribes the user to pushNotifications on food alert
      * @param savedInstanceState
      */
 
@@ -62,13 +69,13 @@ public class MainActivity extends AppCompatActivity {
                     switch (item.getItemId()) {
 
                         case R.id.bottom_action_home:
-
+                            //To show the home fragment with general events
                             replaceFragment(homeFragment, currentFragment);
                             return true;
 
 
                         case R.id.bottom_action_notif:
-
+                            //Used to show the events that have left over food serving
                             replaceFragment(notificationFragment, currentFragment);
                             return true;
 
@@ -80,12 +87,12 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-
+            //listener for the action button to add the new post
             addPostBtn = findViewById(R.id.add_post_btn);
             addPostBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    //forwarding the user to the page to post a new event
                     Intent newPostIntent = new Intent(MainActivity.this, NewPostActivity.class);
                     startActivity(newPostIntent);
 
@@ -114,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     *create menu option to logout of the app
      * @param menu
      * @return
      */
@@ -143,6 +150,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     *This is used to initilize the fragments of
+     * home page and food notification fragments
      *
      */
 
@@ -155,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentTransaction.add(R.id.main_container, homeFragment);
         fragmentTransaction.add(R.id.main_container, notificationFragment);
-
+        //we are initializing only the home fragment on start and hiding the notification fragment
         fragmentTransaction.hide(notificationFragment);
 
         fragmentTransaction.commit();
@@ -163,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     *This is used to hide a fragment and show another on user touch
      * @param fragment
      * @param currentFragment
      */
@@ -185,7 +194,6 @@ public class MainActivity extends AppCompatActivity {
         }
         fragmentTransaction.show(fragment);
 
-        //fragmentTransaction.replace(R.id.main_container, fragment);
         fragmentTransaction.commit();
 
     }

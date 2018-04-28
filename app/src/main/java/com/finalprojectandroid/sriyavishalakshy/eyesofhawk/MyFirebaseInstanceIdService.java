@@ -6,7 +6,9 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.google.firebase.messaging.FirebaseMessaging;
 /*
-* This is service class that is used for cloud messaging for push notifications for the app*/
+* This is service class that is used for cloud messaging for push notifications for the app
+* @author sriyavishalakshy
+ * */
 public class MyFirebaseInstanceIdService extends FirebaseInstanceIdService {
 
     private static final String TAG = "MyFirebaseIIDService";

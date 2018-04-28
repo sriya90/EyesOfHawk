@@ -29,8 +29,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-
-
+/**
+ *This Activity for adding a new post in android
+ *@author sriyavishalakshy
+ */
 public class NewPostActivity extends AppCompatActivity {
     private Toolbar newPostToolbar;
 
@@ -55,7 +57,8 @@ public class NewPostActivity extends AppCompatActivity {
 
 
     /**
-     *
+     *Used to fetch the input for new post and insert into the database depending on
+     * the type of post that has been made
      * @param savedInstanceState
      */
     @Override
@@ -83,14 +86,15 @@ public class NewPostActivity extends AppCompatActivity {
         simpleSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    // The toggle is enabled
+                    // The toggle is enabled to send push notification as food is available
                     switchState = true;
                 } else {
-                    // The toggle is disabled
+                    // The toggle is disabled to send push notification if its a general event post
                     switchState = false;
                 }
             }
         });
+
 
         newPostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +130,12 @@ public class NewPostActivity extends AppCompatActivity {
 
                 }
 
+    /**
+     * This method is used to fetch parameters and enter it into the database
+     * if the switch of it being a food notification was pushed then it will insert into the food database
+     * @param postMap
+     * @param switchState
+     */
                 void addToDatabase(Map<String, Object> postMap, Boolean switchState)
                 {
                     String dbToAddPost=null;
@@ -160,6 +170,9 @@ public class NewPostActivity extends AppCompatActivity {
                     });
                 }
 
+    /**
+     * On a successful insert the user has to move to the home screen
+     */
     private void movetoHomeScreen() {
         Toast.makeText(NewPostActivity.this, "Post was added", Toast.LENGTH_LONG).show();
         Intent mainIntent = new Intent(NewPostActivity.this, MainActivity.class);
@@ -167,6 +180,10 @@ public class NewPostActivity extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * In case of any errors the appropriate error string has to be shown
+     * @param errorMessage
+     */
     private void showErrorMessage(String errorMessage) {
         Toast.makeText(NewPostActivity.this, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
 

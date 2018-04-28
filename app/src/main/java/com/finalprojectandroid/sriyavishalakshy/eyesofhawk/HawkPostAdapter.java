@@ -12,6 +12,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
+/**
+ * This is an Adapter class for the Recycler View of Posts
+ * This class is used to display the posts about events on campus as well as
+ * Food Alert Posts
+ *@author sriyavishalakshy
+ */
 public class HawkPostAdapter extends RecyclerView.Adapter<HawkPostAdapter.ViewHolder>  {
 
     private  List<HawkPost> post_list;
@@ -21,7 +27,7 @@ public class HawkPostAdapter extends RecyclerView.Adapter<HawkPostAdapter.ViewHo
     private FirebaseAuth firebaseAuth;
 
     /**
-     *
+     *Constructor that initializes the
      * @param post_list
      */
     public HawkPostAdapter(List<HawkPost> post_list){
@@ -31,7 +37,7 @@ public class HawkPostAdapter extends RecyclerView.Adapter<HawkPostAdapter.ViewHo
     }
 
     /**
-     *
+     *This method is used to inflate the posts view with data from the db
      * @param parent
      * @param viewType
      * @return
@@ -46,7 +52,8 @@ public class HawkPostAdapter extends RecyclerView.Adapter<HawkPostAdapter.ViewHo
     }
 
     /**
-     *
+     *This method is used to inilize the view post with each of the object data
+     * fetched from list of data
      * @param holder
      * @param position
      */
@@ -63,6 +70,10 @@ public class HawkPostAdapter extends RecyclerView.Adapter<HawkPostAdapter.ViewHo
         return post_list.size();
     }
 
+    /**
+     * This is View Holder class that populates every card in the list
+     *
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
         private View mView;
 
@@ -81,7 +92,8 @@ public class HawkPostAdapter extends RecyclerView.Adapter<HawkPostAdapter.ViewHo
         }
 
         /**
-         *
+         *This method initializes each of the card post on the view with
+         * the object data this populates the hawk_view_layout.xml file
          * @param object
          */
         public void setViewParameters(HawkPost object){

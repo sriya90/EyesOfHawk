@@ -11,6 +11,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.*;
 
+/**
+ *  @author sriyavishalakshy
+ *  This class is used to login for a user to enter into the app
+ */
+
 public class LoginActivity extends AppCompatActivity {
     private EditText loginEmailText;
     private EditText loginPassText;
@@ -22,7 +27,8 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar loginProgress;
 
     /**
-     *
+     *This is used to get the user entered data and
+     * validate it
      * @param savedInstanceState
      */
 
@@ -47,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
+        //On login to check if the credentials match and to forward to home page
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,23 +63,24 @@ public class LoginActivity extends AppCompatActivity {
 
                 if(!TextUtils.isEmpty(loginEmail) && !TextUtils.isEmpty(loginPass)){
                     loginProgress.setVisibility(View.VISIBLE);
-
+                        //calling firebase database to verify the user email and login
                     mAuth.signInWithEmailAndPassword(loginEmail, loginPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             if(task.isSuccessful()){
-
+                                //forward to the home page
                                 sendToMain();
 
                             } else {
 
+                                //displaying the errors in case of any log in problems
                                 String errorMessage = task.getException().getMessage();
                                 Toast.makeText(LoginActivity.this, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
 
 
                             }
-
+                            //progress bar set to being invisible after successful login
                             loginProgress.setVisibility(View.INVISIBLE);
 
                         }
@@ -87,6 +94,11 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     @Override
+
+    /**
+     * This method is used to forward a returning user directly to the main page
+     * so that he does not have to login again
+     */
     protected void onStart() {
         super.onStart();
 
@@ -101,6 +113,9 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Code to forward the user to the main page directly
+     */
     private void sendToMain() {
 
         Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
