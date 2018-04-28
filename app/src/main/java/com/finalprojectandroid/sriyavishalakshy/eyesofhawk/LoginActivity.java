@@ -21,6 +21,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private ProgressBar loginProgress;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.login_btn);
         loginRegBtn = findViewById(R.id.login_reg_btn);
         loginProgress = findViewById(R.id.login_progress);
-//using the register button to move to registration page
+        //using the register button to move to registration page
         loginRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

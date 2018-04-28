@@ -20,12 +20,22 @@ public class HawkPostAdapter extends RecyclerView.Adapter<HawkPostAdapter.ViewHo
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth firebaseAuth;
 
-
+    /**
+     *
+     * @param post_list
+     */
     public HawkPostAdapter(List<HawkPost> post_list){
 
         this.post_list = post_list;
 
     }
+
+    /**
+     *
+     * @param parent
+     * @param viewType
+     * @return
+     */
     @Override
     public HawkPostAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.hawk_view_layout, parent, false);
@@ -35,6 +45,11 @@ public class HawkPostAdapter extends RecyclerView.Adapter<HawkPostAdapter.ViewHo
         return new ViewHolder(view);
     }
 
+    /**
+     *
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(HawkPostAdapter.ViewHolder holder, int position) {
         String desc_data = post_list.get(position).getDesc();
@@ -55,6 +70,7 @@ public class HawkPostAdapter extends RecyclerView.Adapter<HawkPostAdapter.ViewHo
         private TextView roomNo;
         private TextView userName;
         private TextView postDate;
+        private TextView eventDesc;
 
 
 
@@ -64,16 +80,23 @@ public class HawkPostAdapter extends RecyclerView.Adapter<HawkPostAdapter.ViewHo
             mView=itemView;
         }
 
+        /**
+         *
+         * @param object
+         */
         public void setViewParameters(HawkPost object){
 
             descView = mView.findViewById(R.id.post_location);
             descView.setText(object.getDesc());
-            roomNo =  mView.findViewById(R.id.post_room_num);
+            roomNo =  mView.findViewById(R.id.post_room_no);
             roomNo.setText(object.getRoom_no());
             userName = mView.findViewById(R.id.hawkid_user_name);
             userName.setText(object.getUser_id());
             postDate= mView.findViewById(R.id.blog_date);
             postDate.setText(String.valueOf(object.getTimestamp()));
+            eventDesc= mView.findViewById(R.id.post_event);
+            eventDesc.setText(String.valueOf(object.getEvent_info()));
+
 
         }
     }

@@ -1,7 +1,5 @@
 package com.finalprojectandroid.sriyavishalakshy.eyesofhawk;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,7 +23,8 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
-
+This is the fragment class that is generated in order to fill the home page
+ This uses a recycleadapter
  */
 public class HomeFragment extends Fragment {
 
@@ -42,6 +41,13 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
+    /**
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -133,6 +139,9 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    /**
+     *
+     */
     public void loadMorePost(){
 
         if(firebaseAuth.getCurrentUser() != null) {

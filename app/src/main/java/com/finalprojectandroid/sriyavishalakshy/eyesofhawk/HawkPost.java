@@ -1,26 +1,49 @@
 package com.finalprojectandroid.sriyavishalakshy.eyesofhawk;
 
-import com.google.firebase.firestore.ServerTimestamp;
-
 import java.util.Date;
+/*
+This is the object class that represents the posts that have been posted
+I will be reusing this class to post about Food and for generic posts about events around campus
+Author: Sriya Vishalakshy Sahasranam
+
+*/
 
 public class HawkPost {
-    private String user_id, desc, room_no;
+    private String user_id, desc, room_no,event_info;
     private Date timestamp;
     public HawkPost()
     {
 
     }
-    public HawkPost(String user_id, String desc, String room_no, Date timestamp) {
+
+    /**
+     * HawkPost
+     * @param user_id
+     * @param desc
+     * @param room_no
+     * @param timestamp
+     * @param event_info
+     */
+    public HawkPost(String user_id, String desc, String room_no, Date timestamp,String event_info) {
         this.user_id = user_id;
         this.desc = desc;
         this.room_no = room_no;
+        this.event_info=event_info;
         this.timestamp = timestamp;
+    }
+
+    public String getEvent_info() {
+        return event_info;
+    }
+
+    public void setEvent_info(String event_info) {
+        this.event_info = event_info;
     }
 
     public String getUser_id() {
 
         return user_id;
+
     }
 
     public void setUser_id(String user_id) {

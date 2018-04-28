@@ -26,7 +26,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Enter Room No ..."
-        android:inputType="textMultiLine"
+        android:inputType="number|numberSigned"
         android:maxLength="125"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,13 +50,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_post_image" />
 
+    <EditText
+        android:id="@+id/new_post_event"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Enter Event Info"
+        android:inputType="textMultiLine"
+        android:maxLength="125"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_post_desc" />
+
     <Button
         android:id="@+id/post_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="148dp"
         android:backgroundTint="@color/colorAccent"
         android:padding="16dp"
         android:text="@string/new_post_btn_hint"
@@ -64,8 +81,9 @@
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_post_desc" />
+        app:layout_constraintTop_toBottomOf="@+id/new_post_event" />
 
     <ProgressBar
         android:id="@+id/new_post_progress"
@@ -77,6 +95,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/new_post_image" />
+
+    <Switch
+        android:id="@+id/isFood"
+        android:layout_width="198dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Food Push Alert"
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.ExpandedMenu.Item"
+        app:layout_constraintBottom_toTopOf="@+id/post_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_post_event"
+        app:layout_constraintVertical_bias="0.206" />
 
 
 </android.support.constraint.ConstraintLayout>

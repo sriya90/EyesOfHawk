@@ -19,7 +19,7 @@
     <string name="post_desc_hint">Add Location...</string>
     <string name="new_post_btn_hint">Post Alert</string>
     <string name="bottom_home_text">Home</string>
-    <string name="bottom_notification_text">Notification</string>
+    <string name="bottom_notification_text">Food Notification</string>
     <string name="bottom_ac_text">Account</string>
 
     <!-- TODO: Remove or change this placeholder text -->

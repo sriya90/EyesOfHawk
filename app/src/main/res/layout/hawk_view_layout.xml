@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="?attr/colorPrimary">
 
     <android.support.v7.widget.CardView
         android:id="@+id/main_post"
@@ -19,165 +20,148 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="113dp">
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="?android:attr/windowSwipeToDismiss"
+            android:background="?attr/colorBackgroundFloating">
 
-            <ImageView
-                android:id="@+id/hawk_like_btn"
-                android:layout_width="34dp"
-                android:layout_height="32dp"
+            <TextView
+                android:id="@+id/post_location"
+                android:layout_width="197dp"
+                android:layout_height="29dp"
                 android:layout_marginBottom="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="24dp"
+                android:text="TextView"
+                android:textAppearance="@android:style/TextAppearance.Holo.Medium"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.972"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/post_location"
-                app:srcCompat="@mipmap/action_like_gray" />
+                app:layout_constraintTop_toBottomOf="@+id/post_room_no"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/hawkid_user_name"
-                android:layout_width="173dp"
-                android:layout_height="23dp"
-                android:layout_marginBottom="8dp"
+                android:layout_width="300dp"
+                android:layout_height="32dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="32dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
                 android:text="Username"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.044"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="85dp"
                 android:layout_height="26dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Event :"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.089"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/blog_date"
+                tools:text="Event :" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="85dp"
+                android:layout_height="26dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="28dp"
                 android:text="Location :"
                 android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/post_location"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/hawkid_user_name"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             <TextView
                 android:id="@+id/blog_date"
                 android:layout_width="112dp"
                 android:layout_height="19dp"
-                android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="32dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="12dp"
                 android:text="Blog Post Date"
-                app:layout_constraintBottom_toTopOf="@+id/post_room_num"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/hawkid_user_name"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hawkid_user_name" />
 
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="52dp"
-                android:layout_height="24dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="44dp"
+                android:layout_width="84dp"
+                android:layout_height="23dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="36dp"
                 android:text="Room :"
                 android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
-                app:layout_constraintStart_toEndOf="@+id/post_location"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/post_location"
-                android:layout_width="102dp"
-                android:layout_height="24dp"
-                android:layout_marginBottom="44dp"
-                android:layout_marginEnd="152dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="152dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Description"
-                android:textAppearance="@android:style/TextAppearance.Holo.Medium"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.972" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <TextView
-                android:id="@+id/post_like_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="0 Likes"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/hawk_like_btn"
-                app:layout_constraintTop_toBottomOf="@+id/post_location" />
-
-            <TextView
-                android:id="@+id/post_comment_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="8dp"
-                android:text="0 Comments"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.897" />
-
-            <ImageView
-                android:id="@+id/blog_comment_icon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/post_comment_count"
-                app:layout_constraintTop_toBottomOf="@+id/post_location"
-                app:layout_constraintVertical_bias="1.0"
-                app:srcCompat="@mipmap/action_comment_icon" />
-
-            <TextView
-                android:id="@+id/post_room_num"
-                android:layout_width="72dp"
-                android:layout_height="23dp"
-                android:layout_marginBottom="8dp"
+                android:id="@+id/post_room_no"
+                android:layout_width="197dp"
+                android:layout_height="29dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="32dp"
+                android:text="Description"
+                android:textAppearance="@android:style/TextAppearance.Holo.Medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.922"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/post_event" />
+
+            <TextView
+                android:id="@+id/post_event"
+                android:layout_width="197dp"
+                android:layout_height="29dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="48dp"
                 android:text="TextView"
                 android:textAppearance="@android:style/TextAppearance.Holo.Medium"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.026" />
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hawkid_user_name"
+                app:layout_constraintVertical_bias="0.0" />
 
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
