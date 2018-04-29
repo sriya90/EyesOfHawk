@@ -132,7 +132,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     *Login to on start
      */
     @Override
     protected void onStart() {
