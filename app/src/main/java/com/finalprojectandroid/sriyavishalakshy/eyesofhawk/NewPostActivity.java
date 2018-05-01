@@ -9,10 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -33,11 +36,11 @@ import java.util.Map;
  *This Activity for adding a new post in android
  *@author sriyavishalakshy
  */
-public class NewPostActivity extends AppCompatActivity {
+public class NewPostActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     private Toolbar newPostToolbar;
 
     private EditText newPostRoomNo;
-    private EditText newPostDesc;
+    private Spinner newPostDesc;
     private EditText newPostEvent;
     private Button newPostBtn;
 
@@ -53,8 +56,10 @@ public class NewPostActivity extends AppCompatActivity {
 
     private Bitmap compressedImageFile;
     private Boolean switchState = false;
+    private static final String[] locations = {"Alumni Memorial", "Siegel Hall", "Stuart Building"
+    ,"Wishnick Hall","Perlstein Hall"};
 
-
+    String location;
 
     /**
      *Used to fetch the input for new post and insert into the database depending on
@@ -79,6 +84,12 @@ public class NewPostActivity extends AppCompatActivity {
 
         newPostRoomNo = findViewById(R.id.new_post_image);
         newPostDesc = findViewById(R.id.new_post_desc);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(NewPostActivity.this,
+                android.R.layout.simple_spinner_item,locations);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        newPostDesc.setAdapter(adapter);
+        newPostDesc.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
         newPostBtn = findViewById(R.id.post_btn);
         newPostEvent = findViewById(R.id.new_post_event);
         newPostProgress = findViewById(R.id.new_post_progress);
@@ -96,19 +107,20 @@ public class NewPostActivity extends AppCompatActivity {
         });
 
 
+
         newPostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                final String desc = newPostDesc.getText().toString();
+
                 final String roomNo = newPostRoomNo.getText().toString();
                 final String eventInfo = newPostEvent.getText().toString();
 
-                if(!TextUtils.isEmpty(desc) && !TextUtils.isEmpty(roomNo) &&!TextUtils.isEmpty(current_user_id )){
+                if(!TextUtils.isEmpty(location) && !TextUtils.isEmpty(roomNo) &&!TextUtils.isEmpty(current_user_id )){
                     Map<String, Object> postMap = new HashMap<>();
 
                     postMap.put("room_no", roomNo);
-                    postMap.put("desc", desc);
+                    postMap.put("desc", location);
                     postMap.put("event_info", eventInfo);
                     postMap.put("user_id", current_user_id);
                     postMap.put("timestamp", FieldValue.serverTimestamp());
@@ -190,6 +202,17 @@ public class NewPostActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+        location =locations[position];
+
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+        showErrorMessage("Please Select a Location");
+    }
 }
 
 

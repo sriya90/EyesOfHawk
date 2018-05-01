@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/new_post_toolbar"
         app:srcCompat="@drawable/post_placeholder" />
 
-    <EditText
+    <Spinner
         android:id="@+id/new_post_desc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -114,6 +114,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_post_event"
         app:layout_constraintVertical_bias="0.206" />
+
 
 
 </android.support.constraint.ConstraintLayout>
